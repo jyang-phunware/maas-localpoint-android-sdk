@@ -31,7 +31,6 @@
     <supports-screens android:largeScreens="true" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -63,9 +62,7 @@
 
         </activity>
 
-        <service
-            android:name="com.digby.mm.android.library.services.impl.ProximityAlertService"
-            android:label="@string/app_name" />
+        <service android:name="com.digby.mm.android.library.services.impl.GeofenceTransitionsService" android:label="@string/app_name" />
         <service
             android:name="com.digby.mm.android.library.services.impl.BootCompleteService"
             android:label="@string/app_name" />
@@ -104,16 +101,11 @@
         </receiver>
 
         <!-- Required to properly handle location movements -->
-        <receiver
-            android:name="com.digby.mm.android.library.receivers.ProximityAlertReceiver"
-            android:exported="false" >
+        <receiver android:name="com.digby.mm.android.library.receivers.LocationProviderChangedReceiver" >
             <intent-filter>
-                <action android:name="com.digby.mm.android.library.proximityalert" />
-
-                <data
-                    android:host="com.digby.lmm.sandbox.docex"
-                    android:scheme="alert" >
-                </data>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+                <action android:name="providerEnabled" />
+                <category android:name="com.example.android.actionbarcompat" /> <!-- Replace this with the package name of your application. -->
             </intent-filter>
         </receiver>
         <receiver
