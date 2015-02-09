@@ -1,6 +1,10 @@
 Localpoint Android Library - Change Logs
 ==========
 
+Version 2.6.3 *(Coming Soon)*
+----------------------------
+* Bug fixes
+
 Version 2.6.2 *(11/21/2014)*
 ----------------------------
 * Bug fixes
