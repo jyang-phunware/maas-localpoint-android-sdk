@@ -19,26 +19,27 @@ public class LPMessageActivity extends Activity {
 	List<ILPMessage> expiredOffers;
 
 	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lpmessage);
-    }
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_lpmessage);
+	}
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+	@Override
+	protected void onResume() {
+		super.onResume();
 
-        LPLocalpointService service = LPLocalpointService.getInstance(getApplicationContext());
-        // Fetch all valid offers
-        ILPFilter validOffersFilter = service.getMessageProvider().getFilterFactory().getValidFilter();
-        validOffers = service.getMessageProvider().getMessages(validOffersFilter, null);
-        processValidOffers();
+		LPLocalpointService service = LPLocalpointService.getInstance(getApplicationContext());
+		// Fetch all valid offers
+		ILPFilter validOffersFilter = service.getMessageProvider().getFilterFactory().getValidFilter();
+		validOffers = service.getMessageProvider().getMessages(validOffersFilter, null);
+		processValidOffers();
 
-        // Fetch all expired offers
-        ILPFilter expiredOffersFilter = service.getMessageProvider().getFilterFactory().getExpiredFilter();
-        expiredOffers = service.getMessageProvider().getMessages(expiredOffersFilter, null);
-        processExpiredOffers();
-    }
+		// Fetch all expired offers
+		ILPFilter expiredOffersFilter = service.getMessageProvider().getFilterFactory().getExpiredFilter();
+		expiredOffers = service.getMessageProvider().getMessages(expiredOffersFilter, null);
+		processExpiredOffers();
+	}
+
 
     /**
      * Process the valid offers
